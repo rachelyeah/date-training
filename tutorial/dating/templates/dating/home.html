@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+</head>
+<body>
+<h1>欢迎来到登录界面</h1>
+
+<div>
+            <a href="{% url '关注者' %}" role="button">关注人员</a>
+</div>
+<div class="row text-center" style="margin-top=2vh;margin-bottom:2vh;">
+    <span>您的追随者：{{fo}}</span>
+</div>
+<div style="font-size: 12px; font-weight: bold;">
+    <p><a href="{% url '修改' %}" role="button">资料修改</a></p>
+</div>
+</body>
+</html>

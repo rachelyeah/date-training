@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>修改界面</title>
+</head>
+<body>
+<h1 style="text-align:center">修改资料界面</h1>>
+<div class="row text-center" style="margin-top=2vh;margin-bottom:2vh;">
+    <span>欢迎你修改资料哟：{{member.user}}</span>
+</div>
+<form method="post" action="{% url '登录' %}">
+    {% csrf_token %}
+    <p><label>Username:</label>{{ member.username }}</p>
+    <p><label>phone:</label>{{ member.phone }}</p>
+    <p><label>age:</label>{{ member.age }}</p>
+    <p><label>gender:</label>{{ member.gender }}</p>
+<input type="hidden" name="next" value="/" />
+<input type="submit" value="login" />
+</form>
+</body>
+</html>
