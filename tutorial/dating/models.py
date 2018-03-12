@@ -86,14 +86,14 @@ class Member(models.Model):
     username = models.CharField(_('昵称'), max_length=24)
     age = models.IntegerField(_('年龄'), default=0)
     name = models.CharField(_('真实姓名'), max_length=10)
-    height = models.CharField(_('身高（厘米）'), max_length=6)
-    income = models.CharField(_('年薪（人民币）'), max_length=100)
-    wechat = models.CharField(_('微信号'), max_length=30)
-    introduce = models.CharField(_('自我介绍'), max_length=1024)
-    department = models.CharField(_('工作单位'), max_length=1024)
-    station = models.CharField(_('工作岗位'), max_length=80)
-    hometown = models.ForeignKey(Area, on_delete=models.SET_DEFAULT, default=None, related_name='hometown_list')
-    residence = models.ForeignKey(Area, on_delete=models.SET_DEFAULT, default=None, related_name='residence_list')
+    height = models.CharField(_('身高（厘米）'), max_length=6, blank=True, default='')
+    income = models.CharField(_('年薪（人民币）'), max_length=100, blank=True, default='')
+    wechat = models.CharField(_('微信号'), max_length=30, blank=True, default='')
+    introduce = models.CharField(_('自我介绍'), max_length=1024, blank=True, default='')
+    department = models.CharField(_('工作单位'), max_length=1024, blank=True, default='')
+    station = models.CharField(_('工作岗位'), max_length=80, blank=True, default='')
+    hometown = models.ForeignKey(Area, on_delete=models.SET_DEFAULT, default=None, null=True, related_name='hometown_list')
+    residence = models.ForeignKey(Area, on_delete=models.SET_DEFAULT, default=None, null=True, related_name='residence_list')
 
     #
     # def get_full_name(self):

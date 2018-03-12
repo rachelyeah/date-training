@@ -8,4 +8,4 @@ class ProfileForm(forms.Form):
                   ('MALE', 'Male')
     )
     gender = forms.ChoiceField(label='用户性别', choices=MY_CHOICES)
-    age = forms.IntegerField(label='年龄', defalt=18)
+    age = forms.IntegerField(label='年龄')

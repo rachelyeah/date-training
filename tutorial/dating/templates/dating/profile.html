@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>修改界面</title>
+    <script src="http://code.jquery.com/jquery.js"></script>
 </head>
 <body>
-<h1 style="text-align:center">修改资料界面</h1>>
-<div class="row text-center" style="margin-top=2vh;margin-bottom:2vh;">
-    <span>欢迎你修改资料哟：{{member.user}}</span>
-</div>
-<form method="post" action="{% url '登录' %}">
+<h1 style="text-align:center">修改资料界面</h1>
+
+<form method="post" action="{% url '修改' %}">
     {% csrf_token %}
-    <p><label>Username:</label>{{ member.username }}</p>
-    <p><label>phone:</label>{{ member.phone }}</p>
-    <p><label>age:</label>{{ member.age }}</p>
-    <p><label>gender:</label>{{ member.gender }}</p>
-<input type="hidden" name="next" value="/" />
-<input type="submit" value="login" />
+    <fieldset>
+        <legend>用户资料修改</legend>
+        <p><label for="username">Username:</label><input id="username" type="text" name="username" value="{{member.username}}"></p>
+        <p><label for="phone">phone:</label><input id="phone" type="text" pattern="[0-9]{11}" name="phone" value="{{member.phone}}"></p>
+        <p><label for="age">age:</label><input id="age" type="number" name="age" max="150" value="{{member.age}}"></p>
+        <p><input id="female"  type="radio" name="gender" value="FEMALE" {% ifequal member.gender "FEMALE" %}checked {% endifequal %}><label for="female" >Female</label></p>
+        <p><input id="male" type="radio" name="gender" value="MALE" {% ifequal member.gender "MALE" %}checked {% endifequal %}><label for="male">Male</label></p>
+        {{member.gender}}
+        <input type="hidden" name="next" value="/" />
+        <input type="submit"/>
+    </fieldset>
+
 </form>
 </body>
 </html>
