@@ -6,8 +6,15 @@
 </head>
 <body>
 <h1 style="text-align:center">关注列表</h1>
-<div>
-    <li><a herf="{% url'朋友主页'member_id %}">{{followers}}</a></li>
-</div>
+{% ifequal following None %}
+    <div>
+        <p>暂时还没有关注的好友哟，同时也请完善你的资料咯</p>
+    </div>
+{% endifequal %}
+{% ifnotequal following None %}
+    <div>
+        <li><a herf="{% url'朋友主页'member_id %}">{{followers}}</a></li>
+    </div>
+{% endifnotequal %}
 </body>
 </html>

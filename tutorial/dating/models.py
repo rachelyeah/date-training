@@ -114,6 +114,9 @@ class Attention(models.Model):
     follower = models.ForeignKey(Member, on_delete=models.SET_DEFAULT, default=None, related_name='follower_list')
     attentionTime = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return "{0} follows {1}".format(self.follower, self.befollowed)
+
 
 class Invitation(models.Model):
     id = models.AutoField(_('邀请编号'), primary_key=True)
@@ -121,3 +124,6 @@ class Invitation(models.Model):
     invetee = models.ForeignKey(Member, on_delete=models.SET_DEFAULT, default=None, related_name='invitee_list')
     invitationTime = models.DateTimeField(blank=True, null=True)
     invitationNum = models.ForeignKey(Member, on_delete=models.SET_DEFAULT, default=None, related_name='invitation_list')
+
+    def __str__(self):
+        return "{} invite {}".format(self.inviter, self.invetee)

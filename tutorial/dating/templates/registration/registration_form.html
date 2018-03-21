@@ -6,7 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>User Login</h1>
+<h1>User Register</h1>
 {% if form.errors %}
 <p>Your username and password didn't match!
 Please try again!</p>
@@ -17,12 +17,13 @@ Please try again!</p>
         <a href="{% url '主页' %}">您已登录 直接进入主页</a>
     </div>
 {% else %}
-<form method="post" action="{% url '登录' %}" class="">
+<form method="post" action="{% url 'registration_register' %}" class="">
     {% csrf_token %}
     <p><label>Username:</label>{{ form.username }}</p>
-    <p><label>Password:</label>{{ form.password }}</p>
-    <input type="hidden" name="next" value="/" />
-    <input type="submit" value="login" />
+    <p><label>email:</label>{{ form.email }}</p>
+    <p><label>Password:</label>{{ form.password1 }}</p>
+    <p><label>Repeat:</label>{{ form.password2 }}</p>
+    <input type="submit" value="reg" />
 </form>
 {% endif %}
 </body>
